@@ -3,13 +3,9 @@ package servlets;
 
 
 import commands.Command;
+import commands.TargetCommand;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -25,6 +21,7 @@ public class Factory {
     private Factory() {
         ////mains
      // Create Commands here
+        commands.put("main", new TargetCommand("main.jsp"));
         ///// Create a command with main, wich will be index page
     }
 
@@ -37,15 +34,8 @@ public class Factory {
        if (cmdStr == null) {
             cmdStr =  "main" ;
         }
-        System.out.println(cmdStr);
-//        return commands.get(cmdStr);
-//        if (cmdStr == null) {
-//            cmdStr = "logIn";
-//        }
-        Command cmd = commands.get(cmdStr);
 
-        //This is the most important place in terms of security
-        //If you fail here your security is broken
+        Command cmd = commands.get(cmdStr);
        
         return cmd;
     }
