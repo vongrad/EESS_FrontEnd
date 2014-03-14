@@ -6,11 +6,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Electronic elective subject system</title>
         <link rel="stylesheet" href="main.css">
-        <style>
-
-        </style>
     </head>
     <body>
+        <p id="test">Something</p>
         <div>
             <p>All subjects</p>
             <ul id="sortable1" class="connectedSortable">

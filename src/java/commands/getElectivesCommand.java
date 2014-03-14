@@ -12,12 +12,9 @@ public class getElectivesCommand extends TargetCommand {
 
     @Override
     public String execute(HttpServletRequest request) {
-//        Collection<CustomerDTO> custs = servlets.Factory.getInstance().getBankController().getCustomers();
-//        request.getSession().removeAttribute("error");
-//        request.setAttribute("customers", custs);
         Collection<Elective> electives = servlets.Factory.getInstance().getController().getElectives();
         request.setAttribute("electives", electives);
-        
+
         return super.execute(request);
     }
 
