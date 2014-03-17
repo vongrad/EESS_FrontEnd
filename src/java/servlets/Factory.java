@@ -1,22 +1,28 @@
 package servlets;
 
 import commands.Command;
-import commands.getElectivesCommand;
+import commands.GetElectivesCommand;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 public class Factory {
     
-    private static Factory instance = new Factory();
-    private Map<String, Command> commands = new HashMap<>();
-    private static DummyController controller = new DummyController();
+    private static Factory instance;
+    private static DummyController controller;
+    
+    private Map<String, Command> commands;
     
     private Factory() {
-        commands.put("main", new getElectivesCommand("/main.jsp"));
+        controller = new DummyController();
+        commands = new HashMap<>();
+        commands.put("main", new GetElectivesCommand("/jsp/main.jsp"));
     }
 
     public static Factory getInstance() {
+        if (instance == null){
+            instance = new Factory();
+        }
         return instance;
     }
     
@@ -24,13 +30,12 @@ public class Factory {
         return controller;
     }
 
-
     public Command getCommand(String cmdStr, HttpServletRequest res) {
        if (cmdStr == null) {
-            cmdStr =  "main" ;
+            cmdStr =  "main";
         }
-        Command cmd = commands.get(cmdStr);
        
+        Command cmd = commands.get(cmdStr);
         return cmd;
     }
 

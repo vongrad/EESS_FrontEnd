@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Electronic elective subject system</title>
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
         <p id="test">Something</p>
@@ -33,6 +33,6 @@
 
     <script src="//code.jquery.com/jquery-1.9.1.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
 
 </html>

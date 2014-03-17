@@ -22,6 +22,7 @@ public class Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String cmdStr = request.getParameter("command");
         Command command = Factory.getInstance().getCommand(cmdStr, request);
         String path = command.execute(request);
