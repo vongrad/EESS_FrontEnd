@@ -13,8 +13,6 @@ public class Student {
 
     public Student(String firstName) {
         this.firstName = firstName;
-        this.primary = "";
-        this.secondary = "";
     }
 
     public String getFirstName() {
@@ -25,15 +23,15 @@ public class Student {
         return primary;
     }
 
-    public void setPrimary(String primary) {
-        this.primary = primary;
+    public void setPrimary(Elective primary) {
+        this.primary = primary.getSubject();
     }
 
     public String getSecondary() {
         return secondary;
     }
 
-    public void setSecondary(String secondary) {
-        this.secondary = secondary;
+    public void setSecondary(Elective secondary) {
+        this.secondary = secondary.getSubject();
     }
 }

@@ -30,22 +30,22 @@ public class Elective {
 
     public void votePrimary(Student s) {
         primary.add(s);
-        s.setPrimary(this.getSubject());
+        s.setPrimary(this);
     }
 
     public void voteSecondary(Student s) {
         secondary.add(s);
-        s.setSecondary(this.getSubject());
+        s.setSecondary(this);
     }
 
     public void deletePrimary(Student s) {
         primary.remove(s);
-        s.setPrimary("");
+        s.setPrimary(null);
     }
 
     public void deleteSecondary(Student s) {
         secondary.remove(s);
-        s.setSecondary("");
+        s.setSecondary(null);
     }
 
     public ArrayList<Student> getPrimary() {

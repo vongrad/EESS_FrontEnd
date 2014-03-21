@@ -29,11 +29,11 @@ public class DummyController {
         electives.get(1).votePrimary(s3);
         electives.get(3).votePrimary(s4);
         electives.get(3).voteSecondary(s1);
-        students.add(s5);
+        students.add(s1);
         students.add(s2);
         students.add(s3);
         students.add(s4);
-        students.add(s1);
+        students.add(s5);
     }
 
     public Collection<Elective> getElectives() {

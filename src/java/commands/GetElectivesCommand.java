@@ -4,9 +4,9 @@ import data.Elective;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 
-public class getElectivesCommand extends TargetCommand {
+public class GetElectivesCommand extends TargetCommand {
 
-    public getElectivesCommand(String target) {
+    public GetElectivesCommand(String target) {
         super(target);
     }
 
@@ -14,7 +14,6 @@ public class getElectivesCommand extends TargetCommand {
     public String execute(HttpServletRequest request) {
         Collection<Elective> electives = servlets.Factory.getInstance().getController().getElectives();
         request.setAttribute("electives", electives);
-
         return super.execute(request);
     }
 
