@@ -14,7 +14,7 @@ public class getElectivesCommand extends TargetCommand {
     public String execute(HttpServletRequest request) {
         Collection<Elective> electives = servlets.Factory.getInstance().getController().getElectives();
         request.setAttribute("electives", electives);
-
+        
         return super.execute(request);
     }
 

@@ -1,13 +1,9 @@
 package servlets;
 
 import com.google.gson.Gson;
-import data.Elective;
 import data.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,10 +22,7 @@ public class ResponseServer extends HttpServlet {
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter writer = response.getWriter();
         
-        for (Student s : Factory.getInstance().getController().getStudents()) {
-            String poolA = new Gson().toJson(s);
-            writer.print(poolA);
-        }
+        writer.print(new Gson().toJson(Factory.getInstance().getController().getStudents()));
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

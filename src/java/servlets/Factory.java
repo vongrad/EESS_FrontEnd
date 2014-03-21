@@ -1,7 +1,7 @@
 package servlets;
 
 import commands.Command;
-import commands.GetElectivesCommand;
+import commands.getElectivesCommand;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +16,7 @@ public class Factory {
     private Factory() {
         controller = new DummyController();
         commands = new HashMap<>();
-        commands.put("main", new GetElectivesCommand("/jsp/main.jsp"));
+        commands.put("main", new getElectivesCommand("/jsp/main.jsp"));
     }
 
     public static Factory getInstance() {

@@ -11,14 +11,23 @@ $(function() {
                     url: "ResponseServer",
                     //data: JSON.stringify({'A1':poolA1,"A2":poolA2,"B1":poolB1,"B2":poolB2}),
                     data: "A1=" + poolA1 + "&A2=" + poolA2 + "&B1=" + poolB1 + "&B2=" + poolB2,
-                    success: function(msg) {
-                        alert(msg);
-                        $("#test").text("Something happend?");
-                    }
+                    success: doThis()
                 });
             }
         }
     }).disableSelection();
-});
 
-//,"A2=" + poolA2,"B1=" +  poolB1,"B2=" +  poolB2
+    doThis = function() {
+        $("#table").find("tr").remove();
+        $("#table").append("<tr><h4><th>Student Name</th><th>Primary vote</th><th>Secondary votes</th></h4></tr>");
+        
+        var a = $.get("ResponseServer", function(data){
+            $.each(data, function(){
+                var name = this.name.toString();
+                var primary = this.primary.toString();
+                var secondary = this.secondary.toString();
+                $("#table").append("<tr><td>"+ name + "</td><td>" + primary + "</td><td>" + secondary + "</td></tr>");
+            });
+        });
+    };
+});

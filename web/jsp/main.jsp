@@ -8,27 +8,31 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <p id="test">Something</p>
-        <div>
-            <p>All subjects</p>
-            <ul id="sortable1" class="connectedSortable">
-                <c:forEach var="elective" items="${electives}">
-                    <li class="ui-state-highlight">${elective.subject}</li>
-                    </c:forEach>
-            </ul>
+        <div id="mainTables">
+            <div>
+                <p>All subjects</p>
+                <ul id="sortable1" class="connectedSortable">
+                    <c:forEach var="elective" items="${electives}">
+                        <li class="ui-state-highlight">${elective.subject}</li>
+                        </c:forEach>
+                </ul>
+            </div>
+            <div>
+                <p>POOL A</p>
+                <ul id="sortable2" class="connectedSortable">
+                </ul>
+            </div>
+            <div>
+                <p>POOL B</p>
+                <ul id="sortable3" class="connectedSortable">
+                </ul>
+            </div>
         </div>
 
-        <div>
-            <p>POOL A</p>
-            <ul id="sortable2" class="connectedSortable">
-            </ul>
-        </div>
-
-        <div>
-            <p>POOL B</p>
-            <ul id="sortable3" class="connectedSortable">
-            </ul>
-        </div>
+        <h3>Students</h3>
+        <table id="table">
+            
+        </table>
     </body>
 
     <script src="//code.jquery.com/jquery-1.9.1.js"></script>

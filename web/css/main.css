@@ -1,10 +1,32 @@
+#mainTables{
+    position: relative;
+    padding-bottom: 20px;
+}
+
+#mainTables div{
+    display: inline-table;
+}
+
+#table{
+    list-style-type: none; 
+    width: 50%;
+}
+#table tr{
+    width: 100%;
+}
+#table tr:nth-child(even){
+    background-color: lightgrey;
+}
+#table tr td{
+    width: 33%;
+    text-align: center;
+}
 .connectedSortable { 
     list-style-type: none;
     border: 1px solid black;
     width: 150px;
     margin: 0; 
-    padding: 0 0 2.5em; 
-    float: left; 
+    padding: 0 0 2.5em;
     margin-right: 10px; 
 }
 .connectedSortable li { 
@@ -13,4 +35,5 @@
     padding: 5px; 
     font-size: 1.2em; 
     width: 130px; 
+    cursor: pointer;
 }
