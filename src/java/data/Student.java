@@ -23,15 +23,15 @@ public class Student {
         return primary;
     }
 
-    public void setPrimary(Elective primary) {
-        this.primary = primary.getSubject();
+    public void setPrimary(String primary) {
+        this.primary = primary;
     }
 
     public String getSecondary() {
         return secondary;
     }
 
-    public void setSecondary(Elective secondary) {
-        this.secondary = secondary.getSubject();
+    public void setSecondary(String secondary) {
+        this.secondary = secondary;
     }
 }
