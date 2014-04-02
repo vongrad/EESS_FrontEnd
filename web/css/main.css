@@ -1,21 +1,56 @@
+body{
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    min-width: 800px;
+}
+
+#header{
+    background: #1e5799;
+    background: -moz-linear-gradient(45deg,  #1e5799 7%, #7db9e8 74%);
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(7%,#1e5799), color-stop(74%,#7db9e8));
+    background: -webkit-linear-gradient(45deg,  #1e5799 7%,#7db9e8 74%);
+    background: -o-linear-gradient(45deg,  #1e5799 7%,#7db9e8 74%);
+    background: -ms-linear-gradient(45deg,  #1e5799 7%,#7db9e8 74%);
+    background: linear-gradient(45deg,  #1e5799 7%,#7db9e8 74%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 );
+    color: white;
+    height: 100px;
+}
+
+#header p{
+    padding-top: 20px;
+    margin: 0px;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#content{
+    margin: auto;
+}
+
 #mainTables{
     position: relative;
-    padding-bottom: 20px;
 }
 
 #mainTables div{
+    padding: 30px;
     display: inline-table;
 }
 
 #table{
     list-style-type: none; 
     width: 50%;
+    margin: auto;
+    width: 800px;
 }
 #table tr{
     width: 100%;
 }
 #table tr:nth-child(even){
-    background-color: lightgrey;
+    background-color: #1e5799;
+    color: white;
 }
 #table tr td{
     width: 33%;
@@ -30,7 +65,8 @@
     margin-right: 10px; 
 }
 .connectedSortable li { 
-    background-color: lightgrey;
+    background-color: #1e5799;
+    color: white;
     margin: 5px 5px 5px 5px; 
     padding: 5px; 
     font-size: 1.2em; 
