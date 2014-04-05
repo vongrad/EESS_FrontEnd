@@ -54,5 +54,15 @@ $(function() {
             //$(this).find("th:eq(3), td:eq(3)").remove();
             $('#table:last').append($(this));
         });
+        
+        total = rows.size() - 1;
+        unhappy = -1; //cause we do not count the first row in OUR table
+        $(rows).each(function() {
+            if($(this).find(".sortnr").text() == 0){
+                unhappy += 1;
+            }
+        });
+        text = 'Unhappy students: ';
+        $('#unhappy-students').text(text + (unhappy / total * 100) + '%');
     };
 });
