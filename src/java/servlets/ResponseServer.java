@@ -17,7 +17,7 @@ public class ResponseServer extends HttpServlet {
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter writer = response.getWriter();
 
-        writer.print(new Gson().toJson(Factory.getInstance().getController().getStudents()));
+        writer.print(new Gson().toJson(Factory.getInstance().getController().getSecondRoundVote()));
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

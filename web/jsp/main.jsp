@@ -1,6 +1,4 @@
-
-
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,12 +11,12 @@
         <div id="menu">
             <ul id="menu-ul">
                 <li id="menu-text"><div>Menu</div></li>
-                <li class="menu-li"><a href="EESS_FrontEnd?command=index"><div>Main</div></a></li>
+                <li class="menu-li"><a href="EESS_FrontEnd?command=main"><div>Main</div></a></li>
                 <!--//TODO: finish up all this-->
-                <li class="menu-li"><a href="#"><div>1st Round</div></a></li>
+                <li class="menu-li"><a href="EESS_FrontEnd?command=getFirstRound"><div>1st Round</div></a></li>
                 <li class="menu-li"><a href="#"><div>2nd Round</div></a></li>
-                <li class="menu-li"><a href="#"><div>Students</div></a></li>
-                <li class="menu-li"><a href="#"><div>Contacts</div></a></li>
+                <li class="menu-li"><a href="EESS_FrontEnd?command=getSuggestedElectives"><div>Electives</div></a></li>
+                <li class="menu-li"><a href="EESS_FrontEnd?command=suggestElective"><div>Suggest Electives</div></a></li>
             </ul>
         </div>
         <div id="content">
@@ -26,11 +24,9 @@
                 <div>
                     <p>All subjects</p>
                     <ul id="sortable1" class="connectedSortable">
-                        <li class="ui-state-highlight">Artificial Intelligence</li>
-                        <li class="ui-state-highlight">CSharp</li>
-                        <li class="ui-state-highlight">Python</li>
-                        <li class="ui-state-highlight">PHP</li>
-                        <li class="ui-state-highlight">Free time, do nothing</li>
+                        <c:forEach var="elective" items="${electives}">
+                            <li class="ui-state-highlight">${elective.title}</li>
+                            </c:forEach>
                     </ul>
                 </div>
                 <div>

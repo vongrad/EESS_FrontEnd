@@ -24,20 +24,21 @@ $(function() {
         poolB2 = $("#sortable3").children().last().text();
         var a = $.get("ResponseServer", function(data) {
             $.each(data, function() {
-                var student = this;
+                var student = this.student;
+                var name = student.firstName.toString();
+                var lastName = student.lastName.toString();
+                var primary = this.firstPriority1.title.toString();
+                var secondary = this.secondPriority1.title.toString();
                 student.points = 0;
                 $("#sortable2, #sortable3").find("li").each(function() {
                     var subj = $(this).text();
-                    if (subj === student.primary) {
+                    if (subj === primary) {
                         student.points += 2;
-                    } else if (subj === student.secondary) {
+                    } else if (subj === secondary) {
                         student.points += 1;
                     }
                 });
-                var name = student.name.toString();
-                var primary = student.primary.toString();
-                var secondary = student.secondary.toString();
-                $("#table").append("<tr><td>" + name + "</td><td>" + primary + "</td><td>" + secondary + "</td><td class='sortnr'>" + student.points + "</td></tr>");
+                $("#table").append("<tr><td>" + name + " " + lastName + "</td><td>" + primary + "</td><td>" + secondary + "</td><td class='sortnr'>" + student.points + "</td></tr>");
             });
             sortStudents();
         });
