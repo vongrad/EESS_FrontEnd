@@ -23,15 +23,18 @@
             <div>
                 <p>${info}</p>
                 <form action="EESS_FrontEnd" method="post">
-                    <input type="hidden" name="command" value="suggestElective">
-                    <div>Title: <input type="text" value=""></div>
-                    <div>Description: <input type="description" value=""></div>
-                    <div>Teacher: 
-                        <select>
-                            <option value="First">ASD</option>
-                            <option value="Second">QWE</option>
-                        </select>
-                    </div>
+                    <table id="table">
+                        <tr><td>Title:</td><td><input type="text" name="title" value=""></td></tr>
+                        <tr><td>Description</td><td><input type="text" name="description" value=""></td></tr>
+                        <tr><td>Teacher</td><td>
+                                <select name="teacher">
+                                    <c:forEach var="teacher" items="${teachers}">
+                                        <option value="${teacher.CPR}">${teacher.firstName} ${teacher.lastName}</option>
+                                    </c:forEach>
+                                </select></td>
+                        </tr>
+                        <input type="hidden" name="command" value="suggestElective">
+                    </table>
                     <input type="submit" value="Add">
                 </form>
             </div>

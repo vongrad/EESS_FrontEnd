@@ -27,8 +27,8 @@
                     <c:forEach var="vote" items="${votes}">
                         <tr>
                             <td>${vote.student.firstName} ${vote.student.lastName}</td>
-                            <td>${vote.firstPriority1.title} ${vote.firstPriority2.title}</td>
-                            <td>${vote.secondPriority1.title} ${vote.secondPriority2.title}</td>
+                            <td>${vote.firstPriority1.title}, ${vote.firstPriority2.title}</td>
+                            <td>${vote.secondPriority1.title}, ${vote.secondPriority2.title}</td>
                         </tr>
                     </c:forEach>
                 </table>

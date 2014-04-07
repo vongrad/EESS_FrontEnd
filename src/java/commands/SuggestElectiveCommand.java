@@ -1,7 +1,7 @@
 package commands;
 
 import dto.ElectiveDTO;
-import dto.FirstVoteDTO;
+import dto.TeacherDTO;
 import java.util.Collection;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +17,27 @@ public class SuggestElectiveCommand extends TargetCommand {
     public String execute(HttpServletRequest request) {
         String title = request.getParameter("title");
         String description = request.getParameter("description");
+        String teacherID = request.getParameter("teacher");
+
+        Collection<TeacherDTO> teachers = Factory.getInstance().getController().getTeachers();
+        request.setAttribute("teachers", teachers);
         if (title != null || description != null) {
-            request.setAttribute("info", "Elective added");
-            ElectiveDTO elective = new ElectiveDTO(title, description, new Date(), "0");
-            Factory.getInstance().getController().addElective(elective);
+            if (!title.equals("") || !description.equals("")) {
+                request.setAttribute("info", "Elective added");
+                TeacherDTO teacher = null;
+                for (TeacherDTO t : teachers) {
+                    if (t.getCPR().equals(teacherID)) {
+                        teacher = new TeacherDTO(t.getCPR(), t.getFirstName(), t.getLastName(), t.getSkills());
+                    }
+                }
+//                ElectiveDTO elective = new ElectiveDTO(999, title, description, new Date(), "0", teacher);
+                ElectiveDTO elective = new ElectiveDTO(title, description, new Date(), teacher);
+                Factory.getInstance().getController().addElective(elective);
+            } else {
+                request.setAttribute("info", "I fuckin hate java");
+            }
         } else {
             request.setAttribute("info", "Add elective");
-           // Factory.getInstance().getController().g
         };
         return super.execute(request);
     }

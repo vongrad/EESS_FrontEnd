@@ -1,10 +1,6 @@
 package servlets;
 
-import commands.Command;
-import commands.GetElectivesCommand;
-import commands.GetStudentsCommand;
-import commands.GetSuggestedElectives;
-import commands.SuggestElectiveCommand;
+import commands.*;
 import ejb.DBManagerRemote;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,10 +22,12 @@ public class Factory {
     private Factory() {
         controller = new DummyController();
         commands = new HashMap<>();
+        commands.put("index", new LoginCommand("/jsp/index.jsp"));
         commands.put("main", new GetElectivesCommand("/jsp/main.jsp"));
-        commands.put("getFirstRound", new GetStudentsCommand("/jsp/studentList.jsp"));
+        commands.put("getFirstRound", new GetStudentsCommand("/jsp/firstRound.jsp"));
         commands.put("getSuggestedElectives", new GetSuggestedElectives("/jsp/electiveList.jsp"));
         commands.put("suggestElective", new SuggestElectiveCommand("/jsp/suggestElective.jsp"));
+        commands.put("firstRoundStudent", new FirstRoundStudentCommand("/jsp/firstRoundStudent.jsp"));
     }
 
     public static Factory getInstance() {
@@ -48,7 +46,7 @@ public class Factory {
 
     public Command getCommand(String cmdStr, HttpServletRequest res) {
         if (cmdStr == null) {
-            cmdStr = "main";
+            cmdStr = "index";
         }
 
         Command cmd = commands.get(cmdStr);
