@@ -46,7 +46,13 @@
                     <input id="A2" type="hidden" name="A2">
                     <input id="B1" type="hidden" name="B1">
                     <input id="B2" type="hidden" name="B2">
+                    <input id="studentId" type="hidden" name="studentId">
                     <input type="hidden" name="command" value="firstRoundStudent">
+                    <select id="student">
+                        <c:forEach var="student" items="${students}">
+                            <option value="${student.cpr}">${student.firstName} ${student.lastName}</option>
+                        </c:forEach>
+                    </select>
                     <input id=commit type="submit" value="Chose electives">
                 </form>
                 <!--<button id="commit">Chose electives</button>-->
@@ -67,11 +73,8 @@
                     $("#A2").attr("value", $("#sortable2").children().last().text());
                     $("#B1").attr("value", $("#sortable3").children().first().text());
                     $("#B2").attr("value", $("#sortable3").children().last().text());
-//                    $.ajax({
-//                        url: "EESS_FrontEnd",
-////                data: JSON.stringify({'A1':poolA1,"A2":poolA2,"B1":poolB1,"B2":poolB2})
-//                        data: "command=" + "firstRoundStudent" + "&A1=" + first1 + "&A2=" + first2 + "&B1=" + second1 + "&B2=" + second2
-//                    });
+                    $("#studentId").attr("value", $("#student option:selected").attr("value"));
+                    
                 } else {
                     $("#commit").prop("disabled", true);
                 }

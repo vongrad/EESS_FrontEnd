@@ -16,7 +16,9 @@ public class FirstRoundStudentCommand extends TargetCommand {
     @Override
     public String execute(HttpServletRequest request) {
         Collection<ElectiveFirstDTO> electives = servlets.Factory.getInstance().getController().getFirstRndElectives();
+        Collection<StudentDTO> students = servlets.Factory.getInstance().getController().getStudents();
         request.setAttribute("electives", electives);
+        request.setAttribute("students", students);
         String A1 = request.getParameter("A1");
         String A2 = request.getParameter("A2");
         String B1 = request.getParameter("B1");
@@ -37,10 +39,11 @@ public class FirstRoundStudentCommand extends TargetCommand {
                     secondPriority2 = new ElectiveDTO(e.getElectiveID(), e.getTitle(), e.getDescription(), e.getDate(), e.getProposed(), e.getTeacher());
                 }
             }
-            Collection<StudentDTO> students = servlets.Factory.getInstance().getController().getStudents();
             StudentDTO student = null;
+
             for (StudentDTO s : students) {
-                if (student == null) {
+                if (s.getCpr().equals(request.getParameter("studentId"))) {
+                    System.out.println("Now i am here" + request.getParameter("studentId"));
                     student = new StudentDTO(s.getFirstName(), s.getLastName(), s.getCpr());
                 }
             }
