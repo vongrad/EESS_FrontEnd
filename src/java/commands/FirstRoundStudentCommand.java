@@ -1,6 +1,7 @@
 package commands;
 
 import dto.ElectiveDTO;
+import dto.ElectiveFirstDTO;
 import dto.FirstVoteDTO;
 import dto.StudentDTO;
 import java.util.Collection;
@@ -14,7 +15,7 @@ public class FirstRoundStudentCommand extends TargetCommand {
 
     @Override
     public String execute(HttpServletRequest request) {
-        Collection<ElectiveDTO> electives = servlets.Factory.getInstance().getController().getSuggestedElectives();
+        Collection<ElectiveFirstDTO> electives = servlets.Factory.getInstance().getController().getFirstRndElectives();
         request.setAttribute("electives", electives);
         String A1 = request.getParameter("A1");
         String A2 = request.getParameter("A2");

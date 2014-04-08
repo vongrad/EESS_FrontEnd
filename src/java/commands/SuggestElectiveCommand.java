@@ -31,7 +31,7 @@ public class SuggestElectiveCommand extends TargetCommand {
                     }
                 }
 //                ElectiveDTO elective = new ElectiveDTO(999, title, description, new Date(), "0", teacher);
-                ElectiveDTO elective = new ElectiveDTO(title, description, new Date(), teacher);
+                ElectiveDTO elective = new ElectiveDTO(title, description, new Date(), "0", teacher);
                 Factory.getInstance().getController().addElective(elective);
             } else {
                 request.setAttribute("info", "I fuckin hate java");

@@ -14,7 +14,6 @@ public class GetStudentsCommand extends TargetCommand {
     public String execute(HttpServletRequest request) {
         Collection<FirstVoteDTO> votes = servlets.Factory.getInstance().getController().getFirstRoundVote();
         request.setAttribute("votes", votes);
-
         return super.execute(request);
     }
 

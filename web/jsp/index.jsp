@@ -17,7 +17,7 @@
         <div id="content">
             <form>
                 <table id="table">
-                    <tr><td>CPR: </td><td><input type="text" name="cpr"></td></tr>
+                    <tr><td>CPR: </td><td><input type="text" name="cpr" value="014323-4519"></td></tr>
                     <tr><td>Password: </td><td><input type="text" name="password"></td></tr>
                 </table>
                 <input type="hidden" name="command" value="index">

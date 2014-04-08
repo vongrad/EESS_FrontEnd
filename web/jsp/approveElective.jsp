@@ -23,28 +23,46 @@
         </div>
         <div id="content">
             <div>
-                <p>${info}</p>
-                <form action="EESS_FrontEnd" method="post">
-                    <table id="table">
-                        <tr><td>Title:</td><td><input type="text" name="title" value=""></td></tr>
-                        <tr><td>Description</td><td><input type="text" name="description" value=""></td></tr>
-                        <tr><td>Teacher</td><td>
-                                <select name="teacher">
-                                    <c:forEach var="teacher" items="${teachers}">
-                                        <option value="${teacher.CPR}">${teacher.firstName} ${teacher.lastName}</option>
-                                    </c:forEach>
-                                </select></td>
+                <p>Electives</p>
+                <table id="table">
+                    <tr><th>Title</th><th>Description</th><th>Status</th></tr>
+                            <c:forEach var="elective" items="${electives}">
+                        <tr>
+                            <td>${elective.title}</td>
+                            <td>${elective.description}</td>
+                            <td class="status">${elective.proposed}</td>
+                            <td><button class="approve" name="${elective.electiveId}">Approve</button></td>
                         </tr>
-                        <input type="hidden" name="command" value="suggestElective">
-                    </table>
-                    <input type="submit" value="Add">
-                </form>
+                    </c:forEach>
+                </table>
             </div>
         </div>
+        <form id="approveElective" action="EESS_FrontEnd" method="post">
+            <input id="electiveId" type="hidden" name="electiveId">
+            <input type="hidden" name="command" value="approveElective">
+        </form>
     </body>
 
     <script src="//code.jquery.com/jquery-1.9.1.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <script src="js/main.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table').find('tr').find(".status").each(function() {
+                if ($(this).text() == 1) {
+                    $(this).text("Approved");
+                    $(this).parent().find(".approve").remove();
+                } else {
+                    $(this).text("Pending");
+                }
+            });
+
+            $(".approve").click(function() {
+                var electiveId = $(this).attr("name");
+                $("#electiveId").attr("value", electiveId);
+                $("#approveElective").submit();
+            });
+        });
+
+    </script>
 
 </html>
