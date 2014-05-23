@@ -64,6 +64,6 @@ $(function() {
             }
         });
         text = 'Unhappy students: ';
-        $('#unhappy-students').text(text + (unhappy / total * 100) + '%');
+        $('#unhappy-students').text(text + (unhappy / total * 100).toFixed(2) + '%');
     };
 });

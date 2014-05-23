@@ -29,6 +29,7 @@ public class Factory {
         commands.put("approveElective", new GetSuggestedElectives("/jsp/approveElective.jsp"));
         commands.put("suggestElective", new SuggestElectiveCommand("/jsp/suggestElective.jsp"));
         commands.put("firstRoundStudent", new FirstRoundStudentCommand("/jsp/firstRoundStudent.jsp"));
+        commands.put("secondRoundStudent", new SecondRoundStudentCommand("/jsp/secondRoundStudent.jsp"));
     }
 
     public static Factory getInstance() {

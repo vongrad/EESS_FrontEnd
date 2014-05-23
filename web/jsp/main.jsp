@@ -14,6 +14,7 @@
                 <li class="menu-li"><a href="EESS_FrontEnd?command=main"><div>Set Pools</div></a></li>
                 <!--//TODO: finish up all this-->
                 <li class="menu-li"><a href="EESS_FrontEnd?command=firstRoundStudent"><div>First Round Student Vote</div></a></li>
+                <li class="menu-li"><a href="EESS_FrontEnd?command=secondRoundStudent"><div>Second Round Student Vote</div></a></li>
                 <li class="menu-li"><a href="EESS_FrontEnd?command=getFirstRound"><div>1st Round</div></a></li>
                 <!--<li class="menu-li"><a href="#"><div>2nd Round</div></a></li>-->
                 <li class="menu-li"><a href="EESS_FrontEnd?command=getSuggestedElectives"><div>Electives</div></a></li>

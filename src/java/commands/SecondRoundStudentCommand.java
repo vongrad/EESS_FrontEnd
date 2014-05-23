@@ -1,37 +1,39 @@
 package commands;
 
 import dto.ElectiveDTO;
-import dto.ElectiveFirstDTO;
-import dto.FirstVoteDTO;
+import dto.ElectiveSecondDTO;
+import dto.SecondVoteDTO;
 import dto.StudentDTO;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 
-public class FirstRoundStudentCommand extends TargetCommand {
+public class SecondRoundStudentCommand extends TargetCommand {
 
-    public FirstRoundStudentCommand(String target) {
+    public SecondRoundStudentCommand(String target) {
         super(target);
     }
 
     @Override
     public String execute(HttpServletRequest request) {
-        Collection<ElectiveFirstDTO> electives = servlets.Factory.getInstance().getController().getFirstRndElectives();
+        Collection<ElectiveSecondDTO> electivesA = servlets.Factory.getInstance().getController().getSecondRndElectivesA();
+        Collection<ElectiveSecondDTO> electivesB = servlets.Factory.getInstance().getController().getSecondRndElectivesB();
         Collection<StudentDTO> students = new ArrayList();
-        Collection<FirstVoteDTO> firstRound = servlets.Factory.getInstance().getController().getFirstRoundVote();
+        Collection<SecondVoteDTO> secondRound = servlets.Factory.getInstance().getController().getSecondRoundVote();
         for (StudentDTO student : servlets.Factory.getInstance().getController().getStudents()) {
             boolean check = false;
-            for (FirstVoteDTO vote : firstRound) {
+            for (SecondVoteDTO vote : secondRound) {
                 if (student.getCpr().equals(vote.getStudent().getCpr())) {
                     check = true;
                 }
             }
-            if(!check){
+            if (!check) {
                 students.add(new StudentDTO(student.getFirstName(), student.getLastName(), student.getCpr()));
             }
         }
         System.out.println(students.size());
-        request.setAttribute("electives", electives);
+        request.setAttribute("electivesA", electivesA);
+        request.setAttribute("electivesB", electivesB);
         request.setAttribute("students", students);
         String A1 = request.getParameter("A1");
         String A2 = request.getParameter("A2");
@@ -42,12 +44,15 @@ public class FirstRoundStudentCommand extends TargetCommand {
             ElectiveDTO firstPriority2 = null;
             ElectiveDTO secondPriority1 = null;
             ElectiveDTO secondPriority2 = null;
-            for (ElectiveDTO e : electives) {
+            for (ElectiveDTO e : electivesA) {
                 if (e.getTitle().equals(A1)) {
                     firstPriority1 = new ElectiveDTO(e.getElectiveID(), e.getTitle(), e.getDescription(), e.getDate(), e.getProposed(), e.getTeacher());
                 } else if (e.getTitle().equals(A2)) {
                     firstPriority2 = new ElectiveDTO(e.getElectiveID(), e.getTitle(), e.getDescription(), e.getDate(), e.getProposed(), e.getTeacher());
-                } else if (e.getTitle().equals(B1)) {
+                }
+            }
+            for (ElectiveDTO e : electivesB) {
+                if (e.getTitle().equals(B1)) {
                     secondPriority1 = new ElectiveDTO(e.getElectiveID(), e.getTitle(), e.getDescription(), e.getDate(), e.getProposed(), e.getTeacher());
                 } else if (e.getTitle().equals(B2)) {
                     secondPriority2 = new ElectiveDTO(e.getElectiveID(), e.getTitle(), e.getDescription(), e.getDate(), e.getProposed(), e.getTeacher());
@@ -62,8 +67,8 @@ public class FirstRoundStudentCommand extends TargetCommand {
                     System.out.println(request.getParameter("studentId"));
                 }
             }
-            FirstVoteDTO choice = new FirstVoteDTO(student, firstPriority1, firstPriority2, secondPriority1, secondPriority2);
-            servlets.Factory.getInstance().getController().addFirstRndStudentChoice(choice);
+            SecondVoteDTO choice = new SecondVoteDTO(firstPriority1, firstPriority2, secondPriority1, secondPriority2, student);
+            servlets.Factory.getInstance().getController().addSecondRndStudentChoice(choice);
         }
         return super.execute(request);
     }

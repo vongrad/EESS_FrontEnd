@@ -23,23 +23,35 @@
         </div>
         <div id="content">
             <div id="mainTables">
-                <div>
-                    <p>All subjects</p>
-                    <ul id="sortable1" class="connectedSortable">
-                        <c:forEach var="elective" items="${electives}">
-                            <li class="ui-state-highlight">${elective.title}</li>
-                            </c:forEach>
-                    </ul>
+                <div id="poolA">
+                    <div>
+                        <p>Pool A subjects</p>
+                        <ul id="sortableA" class="connectedSortable connectedSortableA">
+                            <c:forEach var="elective" items="${electivesA}">
+                                <li class="ui-state-highlight">${elective.title}</li>
+                                </c:forEach>
+                        </ul>
+                    </div>
+                    <div>
+                        <p>Pool A priorities</p>
+                        <ul id="sortable2" class="connectedSortable connectedSortableA">
+                        </ul>
+                    </div>
                 </div>
-                <div>
-                    <p>First priorities</p>
-                    <ul id="sortable2" class="connectedSortable">
-                    </ul>
-                </div>
-                <div>
-                    <p>Second priorities</p>
-                    <ul id="sortable3" class="connectedSortable">
-                    </ul>
+                <div id="poolB">
+                    <div>
+                        <p>Pool B subjects</p>
+                        <ul id="sortableB" class="connectedSortable connectedSortableB">
+                            <c:forEach var="elective" items="${electivesB}">
+                                <li class="ui-state-highlight">${elective.title}</li>
+                                </c:forEach>
+                        </ul>
+                    </div>
+                    <div>
+                        <p>Pool B priorities</p>
+                        <ul id="sortable3" class="connectedSortable connectedSortableB">
+                        </ul>
+                    </div>
                 </div>
                 <form>
                     <input id="A1" type="hidden" name="A1">
@@ -64,16 +76,26 @@
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script>
         $("#commit").prop("disabled", true);
-        $("#student").change(function(){
+        $("#student").change(function() {
             $("#studentId").attr("value", $("#student option:selected").attr("value"));
         });
-        $("#sortable1, #sortable2, #sortable3").sortable({
-            connectWith: ".connectedSortable",
+        $("#sortableA, #sortable2").sortable({
+            connectWith: ".connectedSortableA",
             stop: function() {
-                if ($("#sortable2").children("li").length === 2 && $("#sortable3").children("li").length === 2) {
+                if ($("#sortableA").children("li").length === 2) {
                     $("#commit").prop("disabled", false);
                     $("#A1").attr("value", $("#sortable2").children().first().text());
                     $("#A2").attr("value", $("#sortable2").children().last().text());
+                } else {
+                    $("#commit").prop("disabled", true);
+                }
+            }
+        }).disableSelection();
+        $("#sortableB, #sortable3").sortable({
+            connectWith: ".connectedSortableB",
+            stop: function() {
+                if ($("#sortableB").children("li").length === 2) {
+                    $("#commit").prop("disabled", false);
                     $("#B1").attr("value", $("#sortable3").children().first().text());
                     $("#B2").attr("value", $("#sortable3").children().last().text());
                 } else {
