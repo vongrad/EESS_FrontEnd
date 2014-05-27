@@ -1,18 +1,18 @@
 package commands;
 
-import dto.FirstVoteDTO;
+import dto.SecondVoteDTO;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 
-public class GetStudentsCommand extends TargetCommand {
+public class SecondRoundStudentVoteInfoCommand extends TargetCommand {
 
-    public GetStudentsCommand(String target) {
+    public SecondRoundStudentVoteInfoCommand(String target) {
         super(target);
     }
 
     @Override
     public String execute(HttpServletRequest request) {
-        Collection<FirstVoteDTO> votes = servlets.Factory.getInstance().getController().getFirstRoundVote();
+        Collection<SecondVoteDTO> votes = servlets.Factory.getInstance().getController().getSecondRoundVote();
         request.setAttribute("votes", votes);
         return super.execute(request);
     }

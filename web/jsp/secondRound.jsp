@@ -9,12 +9,12 @@
     <body>
         <div id="header"><p>Electronic elective subject system</p></div>
         <c:import url="../snippets/menu.html"></c:import>
-            <div id="content">
-                <div>
-                    <p>Students</p>
-                    <table id="table">
-                        <tr><th>Name</th><th>First Priorities</th><th>Second Priorities</th></tr>
-                            <c:forEach var="vote" items="${votes}">
+        <div id="content">
+            <div>
+                <p>Students</p>
+                <table id="table">
+                    <tr><th>Name</th><th>First Priorities</th><th>Second Priorities</th></tr>
+                    <c:forEach var="vote" items="${votes}">
                         <tr>
                             <td>${vote.student.firstName} ${vote.student.lastName}</td>
                             <td>${vote.firstPriority1.title}, ${vote.firstPriority2.title}</td>

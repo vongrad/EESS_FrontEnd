@@ -24,7 +24,8 @@ public class Factory {
         commands = new HashMap<>();
         commands.put("index", new LoginCommand("/jsp/index.jsp"));
         commands.put("main", new GetElectivesCommand("/jsp/main.jsp"));
-        commands.put("getFirstRound", new GetStudentsCommand("/jsp/firstRound.jsp"));
+        commands.put("getFirstRound", new FirstRoundStudentVoteInfoCommand("/jsp/firstRound.jsp"));
+        commands.put("getSecondRound", new SecondRoundStudentVoteInfoCommand("/jsp/secondRound.jsp"));
         commands.put("getSuggestedElectives", new GetSuggestedElectives("/jsp/electiveList.jsp"));
         commands.put("approveElective", new GetSuggestedElectives("/jsp/approveElective.jsp"));
         commands.put("suggestElective", new SuggestElectiveCommand("/jsp/suggestElective.jsp"));
