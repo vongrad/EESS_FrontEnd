@@ -40,11 +40,10 @@ public class Factory {
         return instance;
     }
 
-//    public DummyController getController() {
-//        return controller;
-//    }
     public DBManagerRemote getController(){
-        return dBManager;
+        // a bridge switch between DB and dummyData 
+        return dBManager; //db data controller
+//        return controller; //dummy data controller
     }
 
     public Command getCommand(String cmdStr, HttpServletRequest res) {
