@@ -20,9 +20,9 @@ public class DummyController implements DBManagerRemote {
     private final Collection<StudentDTO> students;
     private final Collection<SkillDTO> skills;
     private final Collection<TeacherDTO> teachers;
-    private Collection<ElectiveFirstDTO> firstRoundElectives;
-    private Collection<FirstVoteDTO> firstVote;
-    private Collection<ElectiveDTO> suggestedElectives;
+    private final Collection<ElectiveFirstDTO> firstRoundElectives;
+    private final Collection<FirstVoteDTO> firstVote;
+    private final Collection<ElectiveDTO> suggestedElectives;
 
     public DummyController() {
         electives = new ArrayList();

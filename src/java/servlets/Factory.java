@@ -15,7 +15,7 @@ public class Factory {
     DBManagerRemote dBManager = lookupDBManagerRemote();
 
     private static Factory instance;
-    private static DummyController controller;
+    private static DBManagerRemote controller;
 
     private final Map<String, Command> commands;
 
@@ -42,8 +42,8 @@ public class Factory {
 
     public DBManagerRemote getController(){
         // a bridge switch between DB and dummyData 
-        return dBManager; //db data controller
-//        return controller; //dummy data controller
+//        return dBManager; //db data controller
+        return controller; //dummy data controller
     }
 
     public Command getCommand(String cmdStr, HttpServletRequest res) {
